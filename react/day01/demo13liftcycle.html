@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+    <div id="example">        
+    </div>
+    <script type="text/babel">
+       var MyComponent= React.createClass({
+           getInitialState:function(){
+               return {count:1}
+           },
+           componentWillMount:function(){
+               console.log("组件准备挂载",this.refs.myInput)
+               
+           },
+           componentDidMount:function(){
+               console.log("组件挂载完毕",this.refs.myInput)
+           },
+           //当state的值或者props中的值发生变化时，会执行的钩子函数
+           componentWillUpdate:function(){
+               console.log('准备更新')
+           },
+           handleClick:function(){
+               //修改状态 
+               var nowCount=this.state.count
+               nowCount++
+               this.setState({count:nowCount})
+           },
+           render:function(){
+               return <div><input ref='myInput' type='text'/><button onClick={this.handleClick}>clickme</button></div>
+           }
+       })
+        ReactDOM.render(
+            <MyComponent/>,document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

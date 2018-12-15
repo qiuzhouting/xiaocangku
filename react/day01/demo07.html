@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+    <div id="example">        
+    </div>
+    <script type="text/babel">
+    var MyCart=React.createClass({
+        delete:function(s){
+            console.log('购物车方法被调用',s)
+        },
+        render:function (){
+           return (<div><h2>这是购物车</h2><MyList func={this.delete}></MyList></div>)
+        }
+    })
+    var MyList=React.createClass({
+       
+        handleClick:function(){
+            alert(1)
+             this.props.func(12)
+        },   
+        render:function(){
+            return (<ul><li><span>这是列表项</span><button onClick={this.handleClick}>删除</button></li></ul>)
+        }
+    })
+        ReactDOM.render(
+            <MyCart></MyCart>
+            ,document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+    <div id="example">        
+    </div>
+    <script type="text/babel">
+      var Form = React.createClass({
+          handleChange:function(event){console.log('change')
+          console.log(event.target.value)},
+          render:function () {
+              return (<form>
+                <lable>用户名</lable>
+                <input type='text' defaultValue='zhangsan'/>
+                <lable>住址</lable>
+                <input type='text' value='bj' onChange={this.handleChange} />
+              </form>)
+          }
+      })
+        ReactDOM.render(
+            <Form />,document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script></script>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+    <div id="example">  
+        <span class="s1">2</span>      
+    </div>
+    
+    <script type="text/babel">
+        var ToDoItem=React.createClass({
+            render:function(){
+                return <p>这是Item</p>
+            }
+        })
+        var ToDoList=React.createClass({
+            render:function(){
+                return <p>这是List</p>
+            }
+        })
+        var ToDoInput=React.createClass({
+            add:function(){
+                // var va=document.querySelector('.p1').value
+                this.props.func(1)
+            },
+            render:function(){
+                return (<div><input className='p1' type='text' placeholder='请输入'/><button onClick={this.add}>add</button></div>)
+            }
+        })
+        var ToDoBox=React.createClass({
+            get:function(d){
+             console.log('增加'+d+'条')
+            },
+            render:function(){
+                return (<div>
+                <ToDoList/>
+                <ToDoItem/>
+                <ToDoInput func={this.get}/>
+                </div>)
+            }
+        })
+        ReactDOM.render(
+            <ToDoBox />,document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <style>
+    .person{
+        border: 1px solid red;
+        width: 200px;
+        height: 200px;
+    }
+    </style>
+</head>
+<body>
+    <div id="d1"></div>
+    <script type="text/babel"> 
+            function Person(props){
+                return (<div>
+                <p>{props.name}</p><p>{props.age}</p>
+                </div>)            
+            }
+                  
+        ReactDOM.render(
+            <Person  name='tom' age='28'/>,
+            document.querySelector('#d1')
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+    <div id="example">        
+    </div>
+    <script type="text/babel">
+    var Con=React.createClass({
+        getInitialState:function(){
+                return {opacityValue:0}
+            },
+        componentDidMount:function(){
+            setInterval(()=>{
+                var nowValue=this.state.opacityValue
+                nowValue+=0.1
+                if(nowValue>1)
+                {nowValue=0}
+                this.setState({opacityValue:nowValue})
+            },500)
+        },
+        render:function () {
+            return <h1 style={{opacity:this.state.opacityValue}}>你好</h1>
+        }
+    })
+        ReactDOM.render(
+            <Con />,document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

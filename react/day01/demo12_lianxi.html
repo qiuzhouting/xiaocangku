@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+    <div id="example">        
+    </div>
+    <script type="text/babel">
+    var Ain=React.createClass({
+        handleChange:function(){
+                //获取输入框的数据
+                //完成子与父的通信
+                var val=this.refs.myVal.value
+                this.props.funcSave(val)
+        },
+        render:function(){
+            return <input type='text' ref='myVal'  onChange={this.handleChange}/>
+        }
+    })
+    var Bin=React.createClass({
+        handleClick:function(){
+            //获取main在调用B的时候。通过content所传递的数据
+            console.log(this.props.content)
+        },
+        render:function(){
+            return <button onClick={this.handleClick}>获取</button>
+        }
+    })
+    var Main=React.createClass({
+         getInitialState:function(){
+             return {myContent:''}       
+         },
+        save:function(msg){
+                // console.log('msg is',msg)
+                this.setState({myContent:msg})
+            },
+        render:function(){
+            return (<div>
+            <Ain funcSave={this.save} />
+            <Bin content={this.state.myContent}/>
+            </div>)
+        }
+    })
+        ReactDOM.render(
+            <Main/>,document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

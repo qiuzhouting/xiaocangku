@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+    <div id="example">
+    </div>
+    <script type="text/babel">
+        //创建一个组件
+     var Mycomt = React.createClass({
+            render:function(){
+                return (<div>
+                        <p>你好 React.js</p>
+                         <input type='button' value='再见'/>
+                         <span>test.React</span>
+                </div>)
+            }
+        });
+        //将刚才的组件渲染到id为example的容器中
+        ReactDOM.render(
+            <Mycomt></Mycomt>,document.getElementById('example')
+       
+        )
+    </script>
+</body>
+</html>

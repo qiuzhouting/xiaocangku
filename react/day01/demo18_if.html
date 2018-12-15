@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+    <div id="example">        
+    </div>
+    <script type="text/babel">
+      var MyComponent = React.createClass({
+          getInitialState:function(){
+              return {isLogin:true,scoreList:[90,80,80,98]}
+          },
+          /*{
+                  this.state.isLogin &&
+              <h2>欢迎登陆</h2>}*/
+            isShow:function(){
+                //如果成绩列表的平均值大于80，则显示一个h2
+                var averageScore=0
+                var allScore=0
+                var len=this.state.scoreList.length
+                for(var i=0;i<len;i++){
+                    allScore+=this.state.scoreList[i]
+                    averageScore=(allScore/len)
+                    if(averageScore>80){
+                        return <h2>通过</h2>
+                    }
+                }
+            },
+          render:function(){
+              return (<div>
+              {this.isShow()}
+              </div>)
+          }
+      })
+        ReactDOM.render(
+            <MyComponent />,document.getElementById('example')
+        )
+    </script>
+</body>
+</html>
